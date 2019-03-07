@@ -1,48 +1,41 @@
 # Workshop Docker 
 
-## Primeros Pasos
+## Crear imagen por medio de un Dockerfile
 
-**Versión de Docker**
+**Crear Carpeta build**
 
-    docker version
+    mkdir build
+    cd build
 
-**Información mas completa de docker**
+**Crear archivo Dockerfile**
 
-    docker info
+    vim Dockerfile
     
-**Información de la capacidad actual**
+**Editar el contenido del dockerfile**
 
-    df -h
+    #this is a custom ubuntu image with ssh already installed
+    FROM ubuntu:xenial
+	MAINTAINER lgonzalez <lgonzalez@altiuz.com>
+	RUN apt-get update
+	RUN apt-get install telnet openssh-server
+
     
-**Ir a la carpeta de Docker**
+**Contruir la imagen**
 
-	cd /var/lib/docker/
-	ll
-	cd containers
+	docker build -t="lgonzalez/ubuntusshonly:v2" .
 	
-**Mostrar contenedores en ejecución**
+**Agregar -y para forzar la respuesta (yes)**
 
-	docker ps
+	#this is a custom ubuntu image with ssh already installed
+    FROM ubuntu:xenial
+	MAINTAINER lgonzalez <lgonzalez@altiuz.com>
+	RUN apt-get update
+	RUN apt-get install -y telnet openssh-server
 	
-**Mostrar historial de ejecución de los contenedores**
+**Contruir la imagen**
 
-	docker ps -a
-	
-**Descargar imagen de Ubuntu Xenial**
+	docker build -t="lgonzalez/ubuntusshonly:v2" .
 
-	docker pull ubuntu:xenial
-	
-**Crear contenedor Ubuntu Xenial y ejecutar /bin/bash**
+**Verificar la instalación de ssh**
 
-	docker run -it ubuntu:xenial /bin/bash
-	
-**Ver programas en ejecución en Ubuntu**
-
-	ps -aux
-	
-**Salir del contenedor y reiniciar el contenedor**
-
-		exit
-		docker restart <name container or Id>
-		docker attach <name container or Id>
-
+	which sshd
