@@ -2,47 +2,41 @@
 
 ## Primeros Pasos
 
-**Versión de Docker**
+**Crear contenedor en modo interactivo**
 
-    docker version
+    docker run -it ubuntu:xenial /bin/bash
 
-**Información mas completa de docker**
+**Crear archivo de ejemplo**
 
-    docker info
+    cd /root
+    echo "This is version 1 of our custom image " > image:ver.txt
+    apt-get update
+    apt-get install telnet openssh-server
+    adduser test
+    which sshd
+    which telent 
+    cat /etc/grouo | grep test
+    exit
     
-**Información de la capacidad actual**
+**Ingresar de nuevo al contendor**
 
-    df -h
+    docker ps -a 
+    docker restart <nombre del contenedor o ID>
+    docker attaach <nombre del contenedor o ID>
     
-**Ir a la carpeta de Docker**
+**Crear commit de los cambios**
 
-	cd /var/lib/docker/
-	ll
-	cd containers
+	docker commit -m "Already installed SSH and created test user" -a lgonzaleze <nombre de la imagen o ID>  lgonzaleze/ubusshd:v1
 	
-**Mostrar contenedores en ejecución**
+**Ingresar a Docker hub por CLI**
 
-	docker ps
+	docker login --username=yourhubusername --email=youremail@company.com
 	
-**Mostrar historial de ejecución de los contenedores**
+**Crar tag de la imagen**
 
-	docker ps -a
+	docker tag bb38976d03cf yourhubusername/verse_gapminder:firsttry
 	
-**Descargar imagen de Ubuntu Xenial**
+**Subir la imagen**
 
-	docker pull ubuntu:xenial
+	docker push yourhubusername/verse_gapminder
 	
-**Crear contenedor Ubuntu Xenial y ejecutar /bin/bash**
-
-	docker run -it ubuntu:xenial /bin/bash
-	
-**Ver programas en ejecución en Ubuntu**
-
-	ps -aux
-	
-**Salir del contenedor y reiniciar el contenedor**
-
-		exit
-		docker restart <name container or Id>
-		docker attach <name container or Id>
-
