@@ -36,6 +36,7 @@
 	> env
 
 **Creamos una variable de entorno con ENV**
+
 	FROM centos:latest
 	MAINTAINER lgonzalez@altiuz.com
 	RUN useradd -ms /bin/bash user

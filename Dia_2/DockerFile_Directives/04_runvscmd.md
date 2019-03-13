@@ -11,6 +11,7 @@ Se ejecuta al momento de crear la imagen [build]
 Se ejecuta al monendo de instanciar el contenedor [run]
 
 **Crear carpeta y dockerfile**
+
 	mkdir EchoServer
     vim Dockerfile
 
@@ -25,6 +26,7 @@ Se ejecuta al monendo de instanciar el contenedor [run]
     USER user
     
 **Crear imagen**
+
     docker build -t="lgonzalez/ubuntuechoserver:v1" .
 
 **Crear el contenedor**
