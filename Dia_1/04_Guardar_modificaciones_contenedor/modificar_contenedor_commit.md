@@ -9,13 +9,13 @@
 **Crear archivo de ejemplo**
 
     cd /root
-    echo "This is version 1 of our custom image " > image:ver.txt
+    echo "This is version 1 of our custom image " > test.txt
     apt-get update
     apt-get install telnet openssh-server
     adduser test
     which sshd
-    which telent 
-    cat /etc/grouo | grep test
+    which telnet
+    cat /etc/group | grep test
     exit
     
 **Ingresar de nuevo al contendor**
@@ -26,6 +26,7 @@
     
 **Crear commit de los cambios**
 
+	docker images
 	docker commit -m "Already installed SSH and created test user" -a lgonzaleze <nombre de la imagen o ID>  lgonzaleze/ubusshd:v1
 	
 **Ingresar a Docker hub por CLI**
