@@ -13,6 +13,7 @@
     vim Dockerfile
 
 **Dockerfile con Java 8**
+
 	FROM centos:latest
 	MAINTAINER lgonzalez@altiuz.com
 	RUN useradd -ms /bin/bash user
